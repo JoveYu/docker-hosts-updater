@@ -17,7 +17,7 @@ def scan():
     containers = []
     for container in docker.containers.list():
         ip = next(iter(container.attrs.get('NetworkSettings').get('Networks').values())).get('IPAddress')
-        if container.status == 'running':
+        if ip and container.status == 'running':
             containers.append({
                 'ip': ip,
                 'hosts': FORMAT % container.name,
