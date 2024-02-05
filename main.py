@@ -4,7 +4,7 @@ import os
 
 FORMAT = '%s.docker'
 MARKER = '#### DOCKER HOSTS UPDATER ####'
-HOSTS_PATH = '/tmp/hosts'
+HOSTS_PATH = '/opt/hosts'
 
 
 def listen():
@@ -41,7 +41,7 @@ def update():
     if items:
         lines.append(MARKER)
         for item in items:
-            line = '{} {}'.format(item['hosts'], item['ip'])
+            line = '{} {}'.format(item['ip'], item['hosts'])
             lines.append(line)
             print(line)
         lines.append(MARKER)
